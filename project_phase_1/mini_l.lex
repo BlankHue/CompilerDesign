@@ -9,7 +9,6 @@
 /*END_DECLARATIONS*/
 
 
-
 /*DEFINITIONS*/
 NUMBER [0-9]
 IDENT  [a-z][a-z0-9]*
@@ -56,6 +55,10 @@ IDENT  [a-z][a-z0-9]*
 ">"					{printf("GT\n"); currPos += yyleng; }
 "<="				{printf("LTE\n"); currPos += yyleng; }
 ">="				{printf("GTE\n"); currPos += yyleng; }
+
+[ \t]+				{currPos += yyleng; }
+"\n"				{currLine++; currPos = 1;}
+
 
 .					{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 %%
