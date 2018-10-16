@@ -43,6 +43,7 @@ IDENT  [a-z][a-z0-9]*
 "false"				{printf("FALSE\n"); currPos += yyleng; }
 "return"			{printf("RETURN\n"); currPos += yyleng; }
 {IDENT}             {printf("IDENT %s\n", yytext);  currPos += yyleng; }
+{NUMBER}			{printf("NUMBER %s\n", yytext);  currPos += yyleng;  }
 
 "-"					{printf("SUB\n"); currPos += yyleng; }
 "+"					{printf("ADD\n"); currPos += yyleng; }
