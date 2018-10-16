@@ -11,7 +11,8 @@
 
 
 /*DEFINITIONS*/
-
+NUMBER [0-9]
+IDENT  [a-z][a-z0-9]*
 /*END_DEFINITIONS*/
 
 %%
@@ -42,6 +43,7 @@
 "true"				{printf("TRUE\n"); currPos += yyleng; }
 "false"				{printf("FALSE\n"); currPos += yyleng; }
 "return"			{printf("RETURN\n"); currPos += yyleng; }
+{IDENT}             {printf("%s\n", yytext);  currPos += yyleng; }
 
 "-"					{printf("SUB\n"); currPos += yyleng; }
 "+"					{printf("ADD\n"); currPos += yyleng; }
