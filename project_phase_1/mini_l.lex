@@ -15,7 +15,6 @@
 /*END_DEFINITIONS*/
 
 %%
-/*RULES*/
 "function"          {printf("FUNCTION\n"); currPos += yyleng; }
 "beginparams"       {printf("BEGIN_PARAMS\n"); currPos += yyleng; }
 "endparams"         {printf("END_PARAMS\n"); currPos += yyleng; }
@@ -57,8 +56,6 @@
 ">="				{printf("GTE\n"); currPos += yyleng; }
 
 .					{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
-
-/*END_RULES*/
 %%
 
 /*USER_SUBROUTINES*/
