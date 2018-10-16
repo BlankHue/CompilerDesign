@@ -42,7 +42,7 @@ IDENT  [a-z][a-z0-9]*
 "true"				{printf("TRUE\n"); currPos += yyleng; }
 "false"				{printf("FALSE\n"); currPos += yyleng; }
 "return"			{printf("RETURN\n"); currPos += yyleng; }
-{IDENT}             {printf("%s\n", yytext);  currPos += yyleng; }
+{IDENT}             {printf("IDENT %s\n", yytext);  currPos += yyleng; }
 
 "-"					{printf("SUB\n"); currPos += yyleng; }
 "+"					{printf("ADD\n"); currPos += yyleng; }
@@ -55,6 +55,17 @@ IDENT  [a-z][a-z0-9]*
 ">"					{printf("GT\n"); currPos += yyleng; }
 "<="				{printf("LTE\n"); currPos += yyleng; }
 ">="				{printf("GTE\n"); currPos += yyleng; }
+
+";"					{printf("SEMICOLON\n"); currPos += yyleng; }
+":"					{printf("COLON\n"); currPos += yyleng; }
+","					{printf("COMMA\n"); currPos += yyleng; }
+"("					{printf("L_PAREN\n"); currPos += yyleng; }
+")"					{printf("R_PAREN\n"); currPos += yyleng; }
+"["					{printf("L_SQUARE_BRACKET\n"); currPos += yyleng; }
+"]"					{printf("R_SQUARE_BRACKET\n"); currPos += yyleng; }
+":="				{printf("ASSIGN\n"); currPos += yyleng; }
+
+
 
 [ \t]+				{currPos += yyleng; }
 "\n"				{currLine++; currPos = 1;}
