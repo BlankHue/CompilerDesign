@@ -11,7 +11,7 @@
 
 /*DEFINITIONS*/
 NUMBER [0-9]*
-IDENT  [a-z][a-z0-9]*[_]*[a-z0-9]*
+IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
 /*END_DEFINITIONS*/
 
 %%
