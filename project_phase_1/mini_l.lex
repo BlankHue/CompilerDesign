@@ -4,7 +4,10 @@
 
 /*DECLARATIONS*/
 %{
-	int currLine = 1, currPos = 1;
+#define UNKNOWN_SYMB	    0x0
+#define FALSE_ID1           0x1
+#define FALSE_ID2           0x2
+int currLine = 1, currPos = 1;
 %}
 /*END_DECLARATIONS*/
 
@@ -12,6 +15,8 @@
 /*DEFINITIONS*/
 NUMBER [0-9]*
 IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
+FALSE_ID1	{ID)_+
+FALSE_ID2	{NUMBER}+{ID}
 COMMENT ##.* 
 /*END_DEFINITIONS*/
 
@@ -78,6 +83,27 @@ COMMENT ##.*
 %%
 
 /*USER_SUBROUTINES*/
+
+void yyerr(int ERR_NUM, char *c){
+  switch(ERR_NUM){
+    case FALSE_ID1:{
+      fprintf(stderr, "Error at line %d, column %d: identifier \"%s\" must not end with an underscorer\n", currLine, currPos, c);
+      break;
+    }
+
+    case FALSE_ID2:{
+      fprintf(stderr, "Error at line %d, column %d: identifier \"%s\" cannot begin with a number\n", currLine, currPos, c);
+      break;
+    }
+
+    default:{
+      fprintf(stderr, "Unknown Error at line %d, column %d with character(s) \"%s\"\n", currLine, currPos, c);
+    }
+  }
+
+  exit(1); //
+
+}
 
 int main(int argc, char ** argv)
 {
