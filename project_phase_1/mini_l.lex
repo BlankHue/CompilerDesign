@@ -4,9 +4,6 @@
 
 /*DECLARATIONS*/
 %{
-#define UNKNOWN_SYMB	    0x0
-#define FALSE_ID1           0x1
-#define FALSE_ID2           0x2
 int currLine = 1, currPos = 1;
 %}
 /*END_DECLARATIONS*/
