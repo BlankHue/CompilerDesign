@@ -77,11 +77,10 @@ COMMENT ##.*
 {COMMENT}			{currPos += yyleng; }
 
 
-.					{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
+
 {FALSE_ID1}			{printf("Error at line %d, column %d: identifier ends with underscore \"%s\"\n", currLine, currPos, yytext); exit(0);}
 {FALSE_ID2}			{printf("Error at line %d, column %d: identifier begins with number \"%s\"\n", currLine, currPos, yytext); exit(0);}
-
-
+.					{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 %%
 
 
