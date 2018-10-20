@@ -74,7 +74,7 @@ WRONGID3 _+{IDENT}
 
 [ \t]+				{currPos += yyleng; }
 "\n"				{currLine++; currPos = 1;}
-{COMMENT}			{currPos += yyleng; currPos = 1;}
+{COMMENT}			{currPos += yyleng;}
 
 {WRONGID2}			{printf("Error at line %d, column %d: identifier starts with number symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 {WRONGID1}			{printf("Error at line %d, column %d: identifier ends with underscore symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
