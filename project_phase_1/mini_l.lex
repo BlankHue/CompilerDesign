@@ -77,6 +77,7 @@ COMMENT ##.*
 {COMMENT}			{currPos += yyleng; }
 
 
+{FALSE_ID1}			{printf("Error at line %d, column %d: identifier ends with underscore \"%s\"\n", currLine, currPos, yytext); exit(0);}
 .					{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 %%
 
