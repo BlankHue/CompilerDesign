@@ -14,6 +14,7 @@ NUMBER [0-9]
 COMMENT ##.*
 WRONGID1 {IDENT}_+
 WRONGID2 {NUMBER}+{IDENT}
+WRONGID3 _+{IDENT}
 
 
 
@@ -77,6 +78,7 @@ WRONGID2 {NUMBER}+{IDENT}
 
 {WRONGID2}			{printf("Error at line %d, column %d: identifier starts with number symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 {WRONGID1}			{printf("Error at line %d, column %d: identifier ends with underscore symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
+{WRONGID3}			{printf("Error at line %d, column %d: identifier begins with underscore symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 .				{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 %%
 
