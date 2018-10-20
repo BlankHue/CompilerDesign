@@ -80,30 +80,12 @@ COMMENT ##.*
 
 
 .					{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
+FALSE_ID1			{printf("Error at line %d, column %d: identifier ends with underscore \"%s\"\n", currLine, currPos, yytext); exit(0);}
+FALSE_ID2			{printf("Error at line %d, column %d: identifier begins with number \"%s\"\n", currLine, currPos, yytext); exit(0);}
+
+
 %%
 
-/*USER_SUBROUTINES*/
-
-void yyerr(int ERR_NUM, char *c){
-  switch(ERR_NUM){
-    case FALSE_ID1:{
-      fprintf(stderr, "Error at line %d, column %d: identifier \"%s\" must not end with an underscorer\n", currLine, currPos, c);
-      break;
-    }
-
-    case FALSE_ID2:{
-      fprintf(stderr, "Error at line %d, column %d: identifier \"%s\" cannot begin with a number\n", currLine, currPos, c);
-      break;
-    }
-
-    default:{
-      fprintf(stderr, "Unknown Error at line %d, column %d with character(s) \"%s\"\n", currLine, currPos, c);
-    }
-  }
-
-  exit(1); //
-
-}
 
 int main(int argc, char ** argv)
 {
