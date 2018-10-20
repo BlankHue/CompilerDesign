@@ -11,7 +11,7 @@ int currLine = 1, currPos = 1;
 IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
 NUMBER [0-9]*
 COMMENT ##.*
-WRONGID1 {IDENT}+[a-z]
+WRONGID1 [ard]
 WRONGID2 {NUMBER}+{IDENT}
 
 
