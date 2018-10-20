@@ -72,7 +72,7 @@ COMMENT ##.*
 "\n"				{currLine++; currPos = 1;}
 {COMMENT}			{currPos += yyleng; }
 
-WRONG_ID2 {NUMBER}+{IDENT}	{printf("Error at line %d, column %d: identifier starts with number symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
+WRONG_ID2			{printf("Error at line %d, column %d: identifier starts with number symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 .				{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 %%
 
