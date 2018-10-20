@@ -12,6 +12,7 @@
 /*DEFINITIONS*/
 NUMBER [0-9]*
 IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
+COMMENT ##.* 
 /*END_DEFINITIONS*/
 
 %%
