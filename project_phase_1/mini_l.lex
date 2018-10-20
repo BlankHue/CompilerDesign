@@ -10,7 +10,7 @@ int currLine = 1, currPos = 1;
 
 ALPHA  [a-zA-Z]
 IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
-NUMBER [0-9]*
+NUMBER [0-9]
 COMMENT ##.*
 WRONGID1 {IDENT}_+
 WRONGID2 {NUMBER}+{IDENT}
@@ -46,7 +46,7 @@ WRONGID2 {NUMBER}+{IDENT}
 "false"				{printf("FALSE\n"); currPos += yyleng; }
 "return"			{printf("RETURN\n"); currPos += yyleng; }
 {IDENT}             {printf("IDENT %s\n", yytext);  currPos += yyleng; }
-{NUMBER}			{printf("NUMBER %s\n", yytext);  currPos += yyleng;  }
+{NUMBER}*			{printf("NUMBER %s\n", yytext);  currPos += yyleng;  }
 
 "-"					{printf("SUB\n"); currPos += yyleng; }
 "+"					{printf("ADD\n"); currPos += yyleng; }
