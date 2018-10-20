@@ -12,7 +12,7 @@ int currLine = 1, currPos = 1;
 /*DEFINITIONS*/
 NUMBER [0-9]*
 IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
-FALSE_ID1 [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?_+
+FALSE_ID1 {IDENT}_+
 FALSE_ID2 {NUMBER}+{IDENT}
 COMMENT ##.* 
 
@@ -78,7 +78,7 @@ COMMENT ##.*
 
 
 {FALSE_ID1}			{printf("Error at line %d, column %d: identifier ends with underscore \"%s\"\n", currLine, currPos, yytext); exit(0);}
-.					{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
+.				{printf("Error at line %d, column %d: unrecognized symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 %%
 
 
