@@ -12,9 +12,10 @@ int currLine = 1, currPos = 1;
 /*DEFINITIONS*/
 NUMBER [0-9]*
 IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
-FALSE_ID1	{IDENT)_+
-FALSE_ID2	{NUMBER}+{IDENT}
+FALSE_ID1 {IDENT)_+
+FALSE_ID2 {NUMBER}+{IDENT}
 COMMENT ##.* 
+
 /*END_DEFINITIONS*/
 
 %%
