@@ -8,10 +8,11 @@ int currLine = 1, currPos = 1;
 %}
 
 
+ALPHA  [a-zA-Z]
 IDENT  [a-zA-Z](([a-zA-Z]|{NUMBER}|_)*([a-zA-Z]|{NUMBER}))?   
 NUMBER [0-9]*
 COMMENT ##.*
-WRONGID1 [ard]
+WRONGID1 {IDENT}_+
 WRONGID2 {NUMBER}+{IDENT}
 
 
@@ -72,7 +73,7 @@ WRONGID2 {NUMBER}+{IDENT}
 
 [ \t]+				{currPos += yyleng; }
 "\n"				{currLine++; currPos = 1;}
-{COMMENT}			{currPos += yyleng; }
+{COMMENT}			{currPos += yyleng; currPos = 1;}
 
 {WRONGID2}			{printf("Error at line %d, column %d: identifier starts with number symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
 {WRONGID1}			{printf("Error at line %d, column %d: identifier ends with underscore symbol \"%s\"\n", currLine, currPos, yytext); exit(0);}
