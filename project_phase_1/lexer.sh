@@ -1,6 +1,8 @@
-echo "Testing lexer with fibonacci.min"
+#!/bin/bash
+
+echo "testing fibonacci.min with lexer---------------------"
 cat fibonacci.min | lexer
-echo "Testing lexer with mytest.min
+echo "testing mytest.min with lexer-------------------------"
 cat mytest.min | lexer
-echo "Testing lexer with primes.min
+echo "testing primes.min with lexer--------------------------"
 cat primes.min | lexer
