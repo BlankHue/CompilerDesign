@@ -460,7 +460,7 @@ void yyerror(const char* s) {
 
 
 
-  printf("ERROR: %s at symbol \%s\ \n", s, yytext);
+  printf("ERROR: %s at symbol %s \n", s, yytext);
 
   exit(1);
 
