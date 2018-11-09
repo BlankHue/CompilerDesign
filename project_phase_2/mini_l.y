@@ -10,7 +10,7 @@ void yyerror(const char* s);
 }
 
 %error-verbose
-%start Start
+%start begin
 
 %token <ident_val> IDENT
 %token <num_val> NUMBER
@@ -72,3 +72,16 @@ void yyerror(const char* s);
 %token SEMICOLON
 %token COMMA
 %left ASSIGN
+
+%%
+
+begin: functions  {printf("begin->functions\n");}
+
+%%
+
+void yyerror(const char* s)
+{
+  extern char* yytext;
+  printf("Error: %s at symbol \"%s\ \n", s, yytext);
+  exit(1);
+ }
