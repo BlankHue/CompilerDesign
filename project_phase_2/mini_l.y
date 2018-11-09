@@ -77,7 +77,7 @@ begin: functions  {printf("begin->functions\n");}
 functions: {printf("functions->epsilon\n");}
           | function functions {printf("functions->function functions\n");}
           ;
-function:   FUNCTION IDENT SEMICOLON BEGINPARAMS declare ENDPARAMS BEGINLOCALS declare ENDLOCALS BEGINBODY statement ENDBODY {printf("function->FUNCTION IDENT SEMICOLON BEGINPARAMS declare ENDPARAMS BEGINLOCALS declare ENDLOCALS BEGINBODY statement ENDBODY\n");}
+function:   FUNCTION IDENT SEMICOLON BEGINPARAMS declare ENDPARAMS BEGINLOCALS declare ENDLOCALS BEGINBODY statements ENDBODY {printf("function->FUNCTION IDENT SEMICOLON BEGINPARAMS declare ENDPARAMS BEGINLOCALS declare ENDLOCALS BEGINBODY statements ENDBODY\n");}
           ;
 declare: {printf("declare->epsilon\n");}
         | declaration SEMICOLON declare {printf("declare->declaration SEMICOLON declare\n");}
@@ -90,7 +90,39 @@ id: IDENT {printf("id->IDENT\n");}
 setval: INTEGER {printf("setval->INTEGER\n");}
         | ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER {printf("setval->ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER\n");}
         ;
-statem
+statements: statement SEMICOLON statements {printf("statements->statement SEMICOLON statements\n");}
+        | statement SEMICOLON {printf("statements->statement SEMICOLON\n");}
+        ;
+statement: A {printf("statement->A\n");}
+        | B {printf("statment->B\n");}
+        | C {printf("statment->C\n");}
+        | D {printf("statment->D\n");}
+        | E {printf("statment->E\n");}
+        | F {printf("statment->F\n");}
+        | G {printf("statment->G\n");}
+        | H {printf("statment->H\n");}
+        ;
+A: var ASSIGN expression {printf("A->var ASSIGN expression\n");}
+        ;
+B: IF boolean_expr THEN statements ENDIF {printf("B->IF boolean_expr THEN statements ENDIF\n");}
+        | IF boolean_expr THEN statements ELSE statements ENDIF {printf("B->IF boolean_expr THEN statements ELSE statements ENDIF\n");}
+        ;
+C: WHILE boolean_expr BEGINLOOP statements ENDLOOP {printf("C->WHILE boolean_expr BEGINLOOP statements ENDLOOP\n");}
+        ;
+D: DO BEGINLOOP statements ENDLOOP WHILE boolean_expr {printf("D->DO BEGINLOOP statements ENDLOOP WHILE boolean_expr\n");}
+        ;
+E: READ var I {printf("E->READ var I\n");}
+        ;
+I: {printf("I->epsilon\n");}
+        | COMMA var I {printf("I->COMMA var I\n");}
+        ;
+F: WRITE var I {printf("F->WRITE var I\n");}
+        ;
+G: CONTINUE {printf("G->CONTINUE\n");}
+        ;
+H: RETURN expression {printf("H->RETURN expression\n");}
+        ;
+boolean_expr: 
         
 %%
 
