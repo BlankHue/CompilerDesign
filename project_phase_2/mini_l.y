@@ -15,9 +15,6 @@ void yyerror(const char* s);
 %token <ident_val> IDENT
 %token <num_val> NUMBER
 
-%token <ident_val> IDENT
-%token <num_val> NUMBER
-
 
 
 %token FUNCTION
