@@ -73,6 +73,7 @@ void yyerror(const char* s);
 %%
 
 begin: functions  {printf("begin->functions\n");}
+        ;
 
 %%
 
