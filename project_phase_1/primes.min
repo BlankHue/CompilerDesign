@@ -12,6 +12,8 @@ function main;
 beginparams
 endparams
 
+?
+
 beginlocals
 
 n : integer;

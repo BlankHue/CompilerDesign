@@ -4,7 +4,7 @@ beginparams
 endparams
 beginlocals
 endlocals
-beginbody
+beginbody 2n
 	if (k <= 1) then return 1; endif;
 	return fibonacci(k - 1) + fibonacci(k - 2);
 endbody
