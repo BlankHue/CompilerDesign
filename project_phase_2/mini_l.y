@@ -456,13 +456,11 @@ Ident:      IDENT
 
 void yyerror(const char* s) {
 
-  extern int lineNum;
-
   extern char* yytext;
 
 
 
-  printf("ERROR: %s at symbol \"%s\" on line %d\n", s, yytext, lineNum);
+  printf("ERROR: %s at symbol \"%s\ \n", s, yytext);
 
   exit(1);
 
