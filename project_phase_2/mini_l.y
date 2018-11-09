@@ -74,7 +74,24 @@ void yyerror(const char* s);
 
 begin: functions  {printf("begin->functions\n");}
         ;
-
+functions: {printf("functions->epsilon\n");}
+          | function functions {printf("functions->function functions\n");}
+          ;
+function:   FUNCTION IDENT SEMICOLON BEGINPARAMS declare ENDPARAMS BEGINLOCALS declare ENDLOCALS BEGINBODY statement ENDBODY {printf("function->FUNCTION IDENT SEMICOLON BEGINPARAMS declare ENDPARAMS BEGINLOCALS declare ENDLOCALS BEGINBODY statement ENDBODY\n");}
+          ;
+declare: {printf("declare->epsilon\n");}
+        | declaration SEMICOLON declare {printf("declare->declaration SEMICOLON declare\n");}
+        ;
+declaration: id COLON setval {printf("id COLON setval\n");}
+        ;
+id: IDENT {printf("id->IDENT\n");}
+        | IDENT COMMA id {printf("id->IDENT COMMA id\n");}
+        ;
+setval: INTEGER {printf("setval->INTEGER\n");}
+        | ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER {printf("setval->ARRAY L_SQUARE_BRACKET NUMBER R_SQUARE_BRACKET OF INTEGER\n");}
+        ;
+statem
+        
 %%
 
 void yyerror(const char* s)
