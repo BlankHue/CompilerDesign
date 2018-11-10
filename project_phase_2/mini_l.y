@@ -23,7 +23,7 @@ void yyerror(const char* s);
 %token BEGINLOCALS
 %token ENDLOCALS
 %token BEGINBODY
-%token END_BODY
+%token ENDBODY
 %token INTEGER
 %token ARRAY
 %token OF
