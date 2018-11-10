@@ -154,7 +154,7 @@ expradd:	{printf("expradd -> epsilon");}
 		| SUB mul_expr expradd {printf("expradd -> SUB mul_expr expradd");}
 		;
 
-mul_expr:	term multi_term {printf("mul_expr -> term multi_term" <<endl;}
+mul_expr:	term multi_term {printf("mul_expr -> term multi_term");}
 		;
 
 multi_term:	{printf("multi_term -> epsilon");}
