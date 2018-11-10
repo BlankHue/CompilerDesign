@@ -169,7 +169,7 @@ term:           posterm {printf("term -> posterm");}
 
 
 posterm:        var {printf("posterm -> var");}
-                | NUMBERS {printf("posterm -> NUMBER");}
+                | NUMBER {printf("posterm -> NUMBER");}
                 | L_PAREN expression R_PAREN {printf("posterm -> L_PAREN expression R_PAREN");}
                 ;
 
@@ -184,7 +184,7 @@ term_ex:        expression {printf("term_ex -> expression");}
                 ;
 
 var:            IDENT {printf("var -> IDENT ");}
-                | IDENT L_SQUARE_BRACKET expression RSQUARE {printf("var -> IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET");} 
+                | IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET {printf("var -> IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET");} 
                 ;
 %%
 
