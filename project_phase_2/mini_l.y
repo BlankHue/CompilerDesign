@@ -210,6 +210,6 @@ void yyerror(const char* s)
 {
   extern char* yytext;
   extern int currLine;
-  printf("Error LINE %d position %r: %s\n", currLine, currPos, s);
+  printf("Error LINE %d: %s\n", currLine, s);
   exit(0);
  }
