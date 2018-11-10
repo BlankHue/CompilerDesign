@@ -153,7 +153,7 @@ expression:	mul_expr expradd {printf("expression -> mult-expr expradd");}
 		;
 
 expradd:	{printf("expradd -> epsilon");}
-		| ADD mul_expr expradd {printf("expradd -> ADD mul_expr expradd");}
+		| PLUS mul_expr expradd {printf("expradd -> PLUS mul_expr expradd");}
 		| SUB mul_expr expradd {printf("expradd -> SUB mul_expr expradd");}
 		;
 
