@@ -19,8 +19,6 @@ FILE * yyin;
 %token <ident_val> IDENT
 %token <num_val> NUMBER
 
-
-
 %token FUNCTION
 %token BEGINPARAMS
 %token ENDPARAMS
@@ -195,6 +193,17 @@ var:            IDENT {printf("var -> IDENT ");}
                 | IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET {printf("var -> IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET");} 
                 ;
 %%
+
+int main(int argc, char **argv) {
+   if (argc > 1) {
+      yyin = fopen(argv[1], "r");
+      if (yyin == NULL){
+         printf("syntax: %s filename\n", argv[0]);
+      }//end if
+   }//end if
+   yyparse(); // Calls yylex() for tokens.
+   return 0;
+}
 
 void yyerror(const char* s)
 {
