@@ -131,67 +131,67 @@ boolean_expr: relation_exprr {printf("boolean_expr->relational_exprr\n");}
 relation_exprr: relation_expr {printf("relation_exprr->relation_expr\n");}
         | relation_exprr AND relation_expr {printf("relation_exprr->relation_exprr AND relation_expr\n");}
         ;
-relation_expr: rexpr {printf("relation_expr->rexpr");}
-	| NOT rexpr {printf("relation_expr->NOT rexpr");}
+relation_expr: rexpr {printf("relation_expr->rexpr\n");}
+	| NOT rexpr {printf("relation_expr->NOT rexpr\n");}
 	;
 	
-rexpr:		expression comp expression {printf("rexpr -> expression comp expression");}
-		| TRUE {printf("rexpr -> TRUE");}
-		| FALSE {printf("rexpr -> FALSE");}
-		| L_PAREN boolean_expr R_PAREN {printf("rexpr -> L_PAREN boolean_expr R_PAREN");}
+rexpr:		expression comp expression {printf("rexpr -> expression comp expression\n");}
+		| TRUE {printf("rexpr -> TRUE\n");}
+		| FALSE {printf("rexpr -> FALSE\n");}
+		| L_PAREN boolean_expr R_PAREN {printf("rexpr -> L_PAREN boolean_expr R_PAREN\n");}
 		;
 
-comp:		EQ {printf("comp -> EQ");}
-		| NEQ {printf("comp -> NEQ");}
-		| LT {printf("comp -> LT");}
-		| GT {printf("comp -> GT");}
-		| LTE {printf("comp -> LTE");}
-		| GTE {printf("comp -> GTE");}
+comp:		EQ {printf("comp -> EQ\n");}
+		| NEQ {printf("comp -> NEQ\n");}
+		| LT {printf("comp -> LT\n");}
+		| GT {printf("comp -> GT\n");}
+		| LTE {printf("comp -> LTE\n");}
+		| GTE {printf("comp -> GTE\n");}
 		;
 
-expression:	mul_expr expradd {printf("expression -> mult-expr expradd");}
+expression:	mul_expr expradd {printf("expression -> mult-expr expradd\n");}
 		;
 
-expradd:	{printf("expradd -> epsilon");}
-		| PLUS mul_expr expradd {printf("expradd -> PLUS mul_expr expradd");}
-		| SUB mul_expr expradd {printf("expradd -> SUB mul_expr expradd");}
+expradd:	{printf("expradd -> epsilon\n");}
+		| PLUS mul_expr expradd {printf("expradd -> PLUS mul_expr expradd\n");}
+		| SUB mul_expr expradd {printf("expradd -> SUB mul_expr expradd\n");}
 		;
 
-mul_expr:	term multi_term {printf("mul_expr -> term multi_term");}
+mul_expr:	term multi_term {printf("mul_expr -> term multi_term\n");}
 		;
 
-multi_term:	{printf("multi_term -> epsilon");}
-		| MULT term multi_term {printf("multi_term -> MULT term multi_term");} 
-		| DIV term multi_term {printf("multi_term -> DIV term multi_term");}
-		| MOD term multi_term {printf("multi_term -> MOD term multi_term");}
+multi_term:	{printf("multi_term -> epsilon\n");}
+		| MULT term multi_term {printf("multi_term -> MULT term multi_term\n");} 
+		| DIV term multi_term {printf("multi_term -> DIV term multi_term\n");}
+		| MOD term multi_term {printf("multi_term -> MOD term multi_term\n");}
 		;
 
 
 
-term:           posterm {printf("term -> posterm");}
-                | SUB posterm {printf("term -> SUB posterm");}
-                | IDENT term_iden {printf("term -> IDENT term_iden");}
+term:           posterm {printf("term -> posterm\n");}
+                | SUB posterm {printf("term -> SUB posterm\n");}
+                | IDENT term_iden {printf("term -> IDENT term_iden\n");}
                 ;
 
 
 
-posterm:        var {printf("posterm -> var");}
-                | NUMBER {printf("posterm -> NUMBER");}
-                | L_PAREN expression R_PAREN {printf("posterm -> L_PAREN expression R_PAREN");}
+posterm:        var {printf("posterm -> var\n");}
+                | NUMBER {printf("posterm -> NUMBER\n");}
+                | L_PAREN expression R_PAREN {printf("posterm -> L_PAREN expression R_PAREN\n");}
                 ;
 
 
 
-term_iden:      L_PAREN term_ex R_PAREN {printf("term_iden -> L_PAREN term_ex R_PAREN");}
-                | L_PAREN R_PAREN {printf("term_iden -> L_PAREN R_PAREN");}
+term_iden:      L_PAREN term_ex R_PAREN {printf("term_iden -> L_PAREN term_ex R_PAREN\n");}
+                | L_PAREN R_PAREN {printf("term_iden -> L_PAREN R_PAREN\n");}
                 ;
 
-term_ex:        expression {printf("term_ex -> expression");}
-                | expression COMMA term_ex {printf("term_ex -> expression COMMA term_ex");}
+term_ex:        expression {printf("term_ex -> expression\n");}
+                | expression COMMA term_ex {printf("term_ex -> expression COMMA term_ex\n");}
                 ;
 
-var:            IDENT {printf("var -> IDENT ");}
-                | IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET {printf("var -> IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET");} 
+var:            IDENT {printf("var -> IDENT \n");}
+                | IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET {printf("var -> IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET\n");} 
                 ;
 %%
 
