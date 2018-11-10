@@ -1,4 +1,4 @@
-lex: mini_ll.y mini_l.lex
+lex: mini_ll.y mini_ll.lex
 	bison -v -d --file-prefix=y mini_ll.y
-	flex mini_l.lex
+	flex mini_ll.lex
 	g++ -o parser y.tab.c lex.yy.c -lfl
