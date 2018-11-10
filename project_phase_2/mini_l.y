@@ -185,7 +185,6 @@ posterm:        var {printf("posterm -> var\n");}
 term_iden:      L_PAREN term_ex R_PAREN {printf("term_iden -> L_PAREN term_ex R_PAREN\n");}
                 | L_PAREN R_PAREN {printf("term_iden -> L_PAREN R_PAREN\n");}
                 ;
-1);
 term_ex:        expression {printf("term_ex -> expression\n");}
                 | expression COMMA term_ex {printf("term_ex -> expression COMMA term_ex\n");}
                 ;
