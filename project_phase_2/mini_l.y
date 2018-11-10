@@ -131,7 +131,7 @@ relation_exprr: relation_expr {printf("relation_exprr->relation_expr\n");}
 rexpr:		expression comp expression {printf("rexpr -> expression comp expression");}
 		| TRUE {printf("rexpr -> TRUE");}
 		| FALSE {printf("rexpr -> FALSE");}
-		| LPAREN boolean_expr RPAREN {printf("rexpr -> LPAREN boolean_expr RPAREN");}
+		| L_PAREN boolean_expr R_PAREN {printf("rexpr -> L_PAREN boolean_expr R_PAREN");}
 		;
 
 comp:		EQ {printf("comp -> EQ");}
@@ -170,21 +170,21 @@ term:           posterm {printf("term -> posterm");}
 
 posterm:        var {printf("posterm -> var");}
                 | NUMBERS {printf("posterm -> NUMBER");}
-                | LPAREN expression RPAREN {printf("posterm -> LPAREN expression RPAREN");}
+                | L_PAREN expression R_PAREN {printf("posterm -> L_PAREN expression R_PAREN");}
                 ;
 
 
 
-term_iden:      LPAREN term_ex RPAREN {printf("term_iden -> LPAREN term_ex RPAREN");}
-                | LPAREN RPAREN {printf("term_iden -> LPAREN RPAREN");}
+term_iden:      L_PAREN term_ex R_PAREN {printf("term_iden -> L_PAREN term_ex R_PAREN");}
+                | L_PAREN R_PAREN {printf("term_iden -> L_PAREN R_PAREN");}
                 ;
 
 term_ex:        expression {printf("term_ex -> expression");}
                 | expression COMMA term_ex {printf("term_ex -> expression COMMA term_ex");}
                 ;
 
-var:            IDENTIFIERS {printf("var -> IDENT ");}
-                | IDENT LSQUARE expression RSQUARE {printf("var -> IDENT LSQUARE expression RSQUARE");} 
+var:            IDENT {printf("var -> IDENT ");}
+                | IDENT L_SQUARE_BRACKET expression RSQUARE {printf("var -> IDENT L_SQUARE_BRACKET expression R_SQUARE_BRACKET");} 
                 ;
 %%
 
