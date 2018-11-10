@@ -86,22 +86,4 @@ WRONGID3 _+{IDENT}
 %%
 
 
-int main(int argc, char ** argv)
-{
-	if (argc >= 2)
-	{
-		yyin = fopen(argv[1], "r");
-		if (yyin == NULL);
-		{
-			yyin = stdin;
-		}
-	}
-	else
-	{
-		yyin = stdin;
-	}
-
-	yylex();
-}
-
 /*END_USER_SUBROUTINES*/
