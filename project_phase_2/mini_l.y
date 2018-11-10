@@ -126,8 +126,12 @@ boolean_expr: relational_exprr {printf("boolean_expr->relational_exprr\n");}
         | boolean_expr OR relation_exprr {printf("boolean_expr->boolean_expr OR relation_exprr\n");}
         ;
 relation_exprr: relation_expr {printf("relation_exprr->relation_expr\n");}
-        | NOT rexpr {printf("relation_exprr->NOT rexpr\n");}
+        | relation_exprr AND relation_expr {printf("relation_exprr->relation_exprr AND relation_expr\n");}
         ;
+relation_expr: rexpr {printf("relation_expr->rexpr");}
+	| NOT rexpr {printf("relation_expr->NOT rexpr");}
+	;
+	
 rexpr:		expression comp expression {printf("rexpr -> expression comp expression");}
 		| TRUE {printf("rexpr -> TRUE");}
 		| FALSE {printf("rexpr -> FALSE");}
