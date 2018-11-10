@@ -18,11 +18,11 @@ void yyerror(const char* s);
 
 
 %token FUNCTION
-%token BEGIN_PARAMS
-%token END_PARAMS
-%token BEGIN_LOCALS
-%token END_LOCALS
-%token BEGIN_BODY
+%token BEGINPARAMS
+%token ENDPARAMS
+%token BEGINLOCALS
+%token ENDLOCALS
+%token BEGINBODY
 %token END_BODY
 %token INTEGER
 %token ARRAY
