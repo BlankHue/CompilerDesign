@@ -122,7 +122,7 @@ G: CONTINUE {printf("G->CONTINUE\n");}
         ;
 H: RETURN expression {printf("H->RETURN expression\n");}
         ;
-boolean_expr: relational_exprr {printf("boolean_expr->relational_exprr\n");}
+boolean_expr: relation_exprr {printf("boolean_expr->relational_exprr\n");}
         | boolean_expr OR relation_exprr {printf("boolean_expr->boolean_expr OR relation_exprr\n");}
         ;
 relation_exprr: relation_expr {printf("relation_exprr->relation_expr\n");}
