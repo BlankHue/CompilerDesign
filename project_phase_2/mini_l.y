@@ -51,7 +51,7 @@ FILE * yyin;
 
 
 %left SUB
-%left ADD
+%left PLUS
 %left MULT
 %left DIV
 %left MOD
