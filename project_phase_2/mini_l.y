@@ -161,40 +161,30 @@ multi_term:	{printf("multi_term -> epsilon");}
 
 
 
-term:           posterm {cout<< "term -> posterm" <<endl;}
-                | SUB posterm {cout<< "term -> SUB posterm"  <<endl;}
-                | IDENTIFIERS term_iden {cout<< "term -> IDENT "<<*($1)<<" term_iden"<<endl;}
+term:           posterm {printf("term -> posterm");}
+                | SUB posterm {printf("term -> SUB posterm");}
+                | IDENTIFIERS term_iden {printf("term -> IDENT "<<*($1)<<" term_iden");}
                 ;
 
 
 
-posterm:        var {cout<< "posterm -> var" <<endl;}
-                | NUMBERS {cout<< "posterm -> NUMBER "<<$1 <<endl;}
-                | LPAREN expression RPAREN {cout<< "posterm -> LPAREN expression RPAREN" <<endl;}
+posterm:        var {printf("posterm -> var");}
+                | NUMBERS {printf("posterm -> NUMBER");}
+                | LPAREN expression RPAREN {printf("posterm -> LPAREN expression RPAREN");}
                 ;
 
 
 
-term_iden:      LPAREN term_ex RPAREN {cout<< "term_iden -> LPAREN term_ex RPAREN" <<endl;}
-
-                | LPAREN RPAREN {cout<< "term_iden -> LPAREN RPAREN" <<endl;}
-
+term_iden:      LPAREN term_ex RPAREN {printf("term_iden -> LPAREN term_ex RPAREN");}
+                | LPAREN RPAREN {printf("term_iden -> LPAREN RPAREN");}
                 ;
 
-
-
-term_ex:        expression {cout<< "term_ex -> expression" <<endl;}
-
-                | expression COMMA term_ex {cout<< "term_ex -> expression COMMA term_ex" <<endl;}
-
+term_ex:        expression {printf("term_ex -> expression");}
+                | expression COMMA term_ex {printf("term_ex -> expression COMMA term_ex");}
                 ;
 
-
-
-var:            IDENTIFIERS {cout<<"var -> IDENT "<<*($1)<<endl;}
-
-                | IDENTIFIERS LSQUARE expression RSQUARE {cout<<"var -> IDENT "<<*($1)<<" LSQUARE expression RSQUARE"<<endl;} 
-
+var:            IDENTIFIERS {printf("var -> IDENT ");}
+                | IDENTIFIERS LSQUARE expression RSQUARE {printf("var -> IDENT LSQUARE expression RSQUARE");} 
                 ;
 %%
 
