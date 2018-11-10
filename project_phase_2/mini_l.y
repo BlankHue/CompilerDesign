@@ -9,15 +9,15 @@ FILE * yyin;
 
 %union
 {
-  char* ident_val;
-  int num_val;
+  char* ident;
+  int val;
 }
 
 %error-verbose
 %start begin
 
-%token <ident_val> IDENT
-%token <num_val> NUMBER
+%token <ident> IDENT
+%token <val> NUMBER
 
 %token FUNCTION
 %token BEGINPARAMS
@@ -56,6 +56,7 @@ FILE * yyin;
 %left DIV
 %left MOD
 %left EQ
+%left NE
 %left NEQ
 %left LT
 %left GT
