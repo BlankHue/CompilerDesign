@@ -209,7 +209,7 @@ int main(int argc, char **argv) {
 void yyerror(const char* s)
 {
   extern char* yytext;
-  extern int row, column;
-  printf("Error LINE %d: at symbol %s\n", row, s);
+  extern int currLine, column;
+  printf("Error LINE %d: at symbol %s\n", currLine, s);
   exit(1);
  }
