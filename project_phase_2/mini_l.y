@@ -122,8 +122,80 @@ G: CONTINUE {printf("G->CONTINUE\n");}
         ;
 H: RETURN expression {printf("H->RETURN expression\n");}
         ;
-boolean_expr: relational_expr {printf("\n");}
-        
+boolean_expr: relational_exprr {printf("boolean_expr->relational_exprr\n");}
+        | boolean_expr OR relation_exprr {printf("boolean_expr->boolean_expr OR relation_exprr\n");}
+        ;
+relation_exprr: relation_expr {printf("relation_exprr->relation_expr\n");}
+        | NOT rexpr {printf("relation_exprr->NOT rexpr\n");}
+        ;
+rexpr:		expression comp expression {printf("rexpr -> expression comp expression");}
+		| TRUE {printf("rexpr -> TRUE");}
+		| FALSE {printf("rexpr -> FALSE");}
+		| LPAREN boolean_expr RPAREN {printf("rexpr -> LPAREN boolean_expr RPAREN");}
+		;
+
+comp:		EQ {printf("comp -> EQ");}
+		| NEQ {printf("comp -> NEQ");}
+		| LT {printf("comp -> LT");}
+		| GT {printf("comp -> GT");}
+		| LTE {printf("comp -> LTE");}
+		| GTE {printf("comp -> GTE");}
+		;
+
+expression:	mul_expr expradd {printf("expression -> mult-expr expradd");}
+		;
+
+expradd:	{printf("expradd -> epsilon");}
+		| ADD mul_expr expradd {printf("expradd -> ADD mul_expr expradd");}
+		| SUB mul_expr expradd {printf("expradd -> SUB mul_expr expradd");}
+		;
+
+mul_expr:	term multi_term {printf("mul_expr -> term multi_term" <<endl;}
+		;
+
+multi_term:	{printf("multi_term -> epsilon");}
+		| MULT term multi_term {printf("multi_term -> MULT term multi_term");} 
+		| DIV term multi_term {printf("multi_term -> DIV term multi_term");}
+		| MOD term multi_term {printf("multi_term -> MOD term multi_term");}
+		;
+
+
+
+term:           posterm {cout<< "term -> posterm" <<endl;}
+                | SUB posterm {cout<< "term -> SUB posterm"  <<endl;}
+                | IDENTIFIERS term_iden {cout<< "term -> IDENT "<<*($1)<<" term_iden"<<endl;}
+                ;
+
+
+
+posterm:        var {cout<< "posterm -> var" <<endl;}
+                | NUMBERS {cout<< "posterm -> NUMBER "<<$1 <<endl;}
+                | LPAREN expression RPAREN {cout<< "posterm -> LPAREN expression RPAREN" <<endl;}
+                ;
+
+
+
+term_iden:      LPAREN term_ex RPAREN {cout<< "term_iden -> LPAREN term_ex RPAREN" <<endl;}
+
+                | LPAREN RPAREN {cout<< "term_iden -> LPAREN RPAREN" <<endl;}
+
+                ;
+
+
+
+term_ex:        expression {cout<< "term_ex -> expression" <<endl;}
+
+                | expression COMMA term_ex {cout<< "term_ex -> expression COMMA term_ex" <<endl;}
+
+                ;
+
+
+
+var:            IDENTIFIERS {cout<<"var -> IDENT "<<*($1)<<endl;}
+
+                | IDENTIFIERS LSQUARE expression RSQUARE {cout<<"var -> IDENT "<<*($1)<<" LSQUARE expression RSQUARE"<<endl;} 
+
+                ;
 %%
 
 void yyerror(const char* s)
