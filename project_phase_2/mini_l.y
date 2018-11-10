@@ -163,7 +163,7 @@ multi_term:	{printf("multi_term -> epsilon");}
 
 term:           posterm {printf("term -> posterm");}
                 | SUB posterm {printf("term -> SUB posterm");}
-                | IDENTIFIERS term_iden {printf("term -> IDENT "<<*($1)<<" term_iden");}
+                | IDENT term_iden {printf("term -> IDENT term_iden");}
                 ;
 
 
@@ -184,7 +184,7 @@ term_ex:        expression {printf("term_ex -> expression");}
                 ;
 
 var:            IDENTIFIERS {printf("var -> IDENT ");}
-                | IDENTIFIERS LSQUARE expression RSQUARE {printf("var -> IDENT LSQUARE expression RSQUARE");} 
+                | IDENT LSQUARE expression RSQUARE {printf("var -> IDENT LSQUARE expression RSQUARE");} 
                 ;
 %%
 
