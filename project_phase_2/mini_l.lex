@@ -4,6 +4,8 @@
 
 /*DECLARATIONS*/
 %{
+#include<stdio.h>
+#include<string.h>
 #include "y.tab.h"
 int currLine = 1, currPos = 1;
 %}
