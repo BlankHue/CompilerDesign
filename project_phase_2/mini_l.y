@@ -209,6 +209,7 @@ void yyerror(const char* s)
 {
   extern char* yytext;
   extern int currLine;
+  extern int currPos;
   printf("Error LINE %d: %s\n", currLine, s);
   exit(0);
  }
