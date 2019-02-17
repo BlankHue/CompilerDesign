@@ -1,4 +1,3 @@
-/* Written by Nikhil Gowda */
 /* A flex scanner specification for a MINI-L Language */
 
 
